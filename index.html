@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohd Kaif Ansari | CS Portfolio</title>
+    <meta name="description" content="Portfolio of Mohd Kaif Ansari, a 2nd Year B.Tech CS Student at KCC Institute of Technology and Management.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: JetBrains Mono (for code look) and Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0a192f', /* Deep Navy/Black */
+                        'dark-card': '#112240', /* Slightly Lighter Navy */
+                        'neon-cyan': '#64ffda', /* The "Hacker" Green/Cyan */
+                        'slate-light': '#8892b0',
+                        'slate-lighter': '#ccd6f6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styles */
+        body {
+            background-color: #0a192f;
+            color: #8892b0;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a192f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #495670;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64ffda;
+        }
+
+        /* Typewriter Cursor Animation */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #64ffda;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Hover Utilities */
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #64ffda;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-neon-cyan selection:text-dark-bg">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-dark-bg/90 backdrop-blur-sm border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-mono text-2xl font-bold text-neon-cyan border-2 border-neon-cyan rounded px-2 py-1 hover:bg-neon-cyan/10 transition">Kaif.</a>
+                </div>
+                
+                <!-- Desktop Links -->
+                <div class="hidden md:flex space-x-8 items-center font-mono text-sm">
+                    <a href="#about" class="text-slate-lighter hover:text-neon-cyan transition hover-underline-animation"><span class="text-neon-cyan">01.</span> About</a>
+                    <a href="#skills" class="text-slate-lighter hover:text-neon-cyan transition hover-underline-animation"><span class="text-neon-cyan">02.</span> Skills</a>
+                    <a href="#projects" class="text-slate-lighter hover:text-neon-cyan transition hover-underline-animation"><span class="text-neon-cyan">03.</span> Projects</a>
+                    <a href="#contact" class="text-slate-lighter hover:text-neon-cyan transition hover-underline-animation"><span class="text-neon-cyan">04.</span> Contact</a>
+                    <a href="your-cv-link.pdf" target="_blank" class="border border-neon-cyan text-neon-cyan px-4 py-2 rounded hover:bg-neon-cyan/10 transition">Resume</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-neon-cyan text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-t border-white/10 absolute w-full shadow-xl">
+            <div class="px-6 py-4 space-y-4 font-mono text-center">
+                <a href="#about" class="block text-slate-lighter hover:text-neon-cyan">01. About</a>
+                <a href="#skills" class="block text-slate-lighter hover:text-neon-cyan">02. Skills</a>
+                <a href="#projects" class="block text-slate-lighter hover:text-neon-cyan">03. Projects</a>
+                <a href="#contact" class="block text-slate-lighter hover:text-neon-cyan">04. Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="max-w-5xl w-full">
+            <p class="font-mono text-neon-cyan mb-5 ml-1">Hi, my name is</p>
+            <h1 class="text-5xl md:text-7xl font-bold text-slate-lighter mb-4 tracking-tight">Mohd Kaif Ansari.</h1>
+            <h2 class="text-4xl md:text-6xl font-bold text-slate-light mb-6">
+                I am a <span id="typewriter" class="text-neon-cyan"></span><span class="cursor">&nbsp;</span>
+            </h2>
+            <p class="text-slate-light max-w-xl text-lg mb-10 leading-relaxed">
+                I'm a 2nd Year Computer Science student at <span class="text-neon-cyan">KCC Institute of Technology and Management, Greater Noida</span>. I specialize in turning logic into code and building intelligent digital experiences.
+            </p>
+            
+            <div class="flex gap-6 mb-12">
+                <a href="https://github.com/" target="_blank" class="text-slate-lighter hover:text-neon-cyan text-2xl transition hover:-translate-y-1"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/md-kaif-0345a6249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="text-slate-lighter hover:text-neon-cyan text-2xl transition hover:-translate-y-1"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://instagram.com/" target="_blank" class="text-slate-lighter hover:text-neon-cyan text-2xl transition hover:-translate-y-1"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <a href="#projects" class="font-mono text-neon-cyan border border-neon-cyan px-8 py-4 rounded hover:bg-neon-cyan/10 transition duration-300">Check out my work!</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-lighter"><span class="font-mono text-neon-cyan text-xl mr-2">01.</span>About Me</h2>
+                <div class="h-px bg-slate-light/30 flex-grow max-w-xs"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="md:col-span-2 text-slate-light text-lg leading-relaxed space-y-4">
+                    <p>
+                        Hello! My name is Kaif and I enjoy creating things that live on the internet. My interest in <span class="text-neon-cyan">Machine Learning</span> started back in my first year of college when I decided to explore data patterns — turns out training models to predict outcomes is pretty fun!
+                    </p>
+                    <p>
+                        Fast-forward to today, I am currently a 2nd Year B.Tech Student at <span class="text-neon-cyan">KCC Institute of Technology and Management</span> in Greater Noida.
+                    </p>
+                    <p>
+                        I spend most of my time solving <span class="text-neon-cyan">DSA problems</span> to sharpen my logic or building small projects to learn new technologies. I am aspiring to become a Machine Learning Engineer.
+                    </p>
+                </div>
+                <!-- Profile Image Section -->
+                <div class="md:col-span-1 flex justify-center md:justify-start">
+                    <div class="relative group w-48 h-48 md:w-full md:h-64">
+                        <!-- Neon Border Effect -->
+                        <div class="absolute inset-0 border-2 border-neon-cyan rounded translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition duration-300"></div>
+                        
+                        <!-- Image Container -->
+                        <div class="relative w-full h-full bg-dark-card rounded overflow-hidden filter grayscale hover:grayscale-0 transition duration-300">
+                            <!-- Replace the src below with your own photo file, e.g., src="kaif.jpg" -->
+                            <img src="https://ui-avatars.com/api/?name=Mohd+Kaif&background=0a192f&color=64ffda&size=512&font-size=0.33" alt="Mohd Kaif Ansari" class="object-cover w-full h-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6 bg-[#0a192f]">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-lighter"><span class="font-mono text-neon-cyan text-xl mr-2">02.</span>Tech Stack</h2>
+                <div class="h-px bg-slate-light/30 flex-grow max-w-xs"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 font-mono text-sm">
+                <!-- Skill 1 -->
+                <div class="bg-dark-card p-4 rounded hover:-translate-y-1 transition duration-300 border-b-2 border-transparent hover:border-neon-cyan group text-center">
+                    <i class="fa-brands fa-java text-3xl mb-3 text-slate-light group-hover:text-neon-cyan block"></i>
+                    <span class="text-slate-lighter">Java</span>
+                </div>
+                <!-- Skill 2 -->
+                <div class="bg-dark-card p-4 rounded hover:-translate-y-1 transition duration-300 border-b-2 border-transparent hover:border-neon-cyan group text-center">
+                    <i class="fa-solid fa-code text-3xl mb-3 text-slate-light group-hover:text-neon-cyan block"></i>
+                    <span class="text-slate-lighter">C++</span>
+                </div>
+                <!-- Skill 3 -->
+                <div class="bg-dark-card p-4 rounded hover:-translate-y-1 transition duration-300 border-b-2 border-transparent hover:border-neon-cyan group text-center">
+                    <i class="fa-brands fa-html5 text-3xl mb-3 text-slate-light group-hover:text-neon-cyan block"></i>
+                    <span class="text-slate-lighter">HTML/CSS</span>
+                </div>
+                <!-- Skill 4 -->
+                <div class="bg-dark-card p-4 rounded hover:-translate-y-1 transition duration-300 border-b-2 border-transparent hover:border-neon-cyan group text-center">
+                    <i class="fa-brands fa-js text-3xl mb-3 text-slate-light group-hover:text-neon-cyan block"></i>
+                    <span class="text-slate-lighter">JavaScript</span>
+                </div>
+                <!-- Skill 5 -->
+                <div class="bg-dark-card p-4 rounded hover:-translate-y-1 transition duration-300 border-b-2 border-transparent hover:border-neon-cyan group text-center">
+                    <i class="fa-solid fa-database text-3xl mb-3 text-slate-light group-hover:text-neon-cyan block"></i>
+                    <span class="text-slate-lighter">SQL</span>
+                </div>
+                <!-- Skill 6 -->
+                <div class="bg-dark-card p-4 rounded hover:-translate-y-1 transition duration-300 border-b-2 border-transparent hover:border-neon-cyan group text-center">
+                    <i class="fa-brands fa-python text-3xl mb-3 text-slate-light group-hover:text-neon-cyan block"></i>
+                    <span class="text-slate-lighter">Python</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-lighter"><span class="font-mono text-neon-cyan text-xl mr-2">03.</span>Some Things I've Built</h2>
+                <div class="h-px bg-slate-light/30 flex-grow max-w-xs"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <!-- Project Card 1 -->
+                <div class="bg-dark-card rounded p-6 shadow-xl hover:-translate-y-2 transition duration-300 group flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <i class="fa-regular fa-folder text-4xl text-neon-cyan"></i>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-slate-light hover:text-neon-cyan transition"><i class="fa-brands fa-github text-xl"></i></a>
+                                <a href="#" class="text-slate-light hover:text-neon-cyan transition"><i class="fa-solid fa-arrow-up-right-from-square text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-lighter mb-2 group-hover:text-neon-cyan transition">Library Management System</h3>
+                        <p class="text-slate-light text-sm mb-4">
+                            A robust desktop application for managing book issues, returns, and inventory. Built to handle complex database queries efficiently.
+                        </p>
+                    </div>
+                    <ul class="flex gap-3 text-xs font-mono text-slate-500 mt-auto">
+                        <li>Java</li>
+                        <li>SQL</li>
+                        <li>JDBC</li>
+                    </ul>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="bg-dark-card rounded p-6 shadow-xl hover:-translate-y-2 transition duration-300 group flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <i class="fa-regular fa-folder text-4xl text-neon-cyan"></i>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-slate-light hover:text-neon-cyan transition"><i class="fa-brands fa-github text-xl"></i></a>
+                                <a href="https://storied-profiterole-e91e81.netlify.app/" target="_blank" class="text-slate-light hover:text-neon-cyan transition"><i class="fa-solid fa-arrow-up-right-from-square text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-lighter mb-2 group-hover:text-neon-cyan transition">Nasiruddin Construction</h3>
+                        <p class="text-slate-light text-sm mb-4">
+                            A professional business landing page for a construction firm. Features responsive design, service pricing cards, and a contact form with mobile number validation.
+                        </p>
+                    </div>
+                    <ul class="flex gap-3 text-xs font-mono text-slate-500 mt-auto">
+                        <li>HTML5</li>
+                        <li>Tailwind</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="bg-dark-card rounded p-6 shadow-xl hover:-translate-y-2 transition duration-300 group flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <i class="fa-regular fa-folder text-4xl text-neon-cyan"></i>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-slate-light hover:text-neon-cyan transition"><i class="fa-brands fa-github text-xl"></i></a>
+                                <a href="#" class="text-slate-light hover:text-neon-cyan transition"><i class="fa-solid fa-arrow-up-right-from-square text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-lighter mb-2 group-hover:text-neon-cyan transition">Portfolio Website</h3>
+                        <p class="text-slate-light text-sm mb-4">
+                            The site you are looking at right now! Designed with a mobile-first approach and custom CSS animations.
+                        </p>
+                    </div>
+                    <ul class="flex gap-3 text-xs font-mono text-slate-500 mt-auto">
+                        <li>HTML5</li>
+                        <li>Tailwind</li>
+                        <li>Netlify</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 text-center">
+        <div class="max-w-2xl mx-auto">
+            <p class="font-mono text-neon-cyan mb-4">04. What's Next?</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-lighter mb-6">Get In Touch</h2>
+            <p class="text-slate-light text-lg mb-12">
+                I am currently looking for internship opportunities. Whether you have a question about my projects or just want to say hi, I'll try my best to get back to you!
+            </p>
+
+            <!-- Contact Form -->
+            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="max-w-md mx-auto bg-dark-card p-8 rounded border border-white/5 text-left shadow-lg">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-slate-lighter text-sm font-mono mb-2">Name</label>
+                        <input type="text" name="name" required class="w-full bg-[#0a192f] border border-slate-700 rounded p-3 text-slate-lighter focus:border-neon-cyan focus:outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-slate-lighter text-sm font-mono mb-2">Phone</label>
+                        <input type="tel" id="phoneNumber" name="phone" required class="w-full bg-[#0a192f] border border-slate-700 rounded p-3 text-slate-lighter focus:border-neon-cyan focus:outline-none transition">
+                        <p id="phoneError" class="text-red-400 text-xs mt-1 hidden font-mono">Number must be exactly 10 digits.</p>
+                    </div>
+                    <div>
+                        <label class="block text-slate-lighter text-sm font-mono mb-2">Message</label>
+                        <textarea name="message" rows="4" required class="w-full bg-[#0a192f] border border-slate-700 rounded p-3 text-slate-lighter focus:border-neon-cyan focus:outline-none transition"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-transparent border border-neon-cyan text-neon-cyan font-mono py-3 rounded hover:bg-neon-cyan/10 transition mt-2">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-slate-light text-xs font-mono mb-4">
+        <a href="#" class="hover:text-neon-cyan transition block mb-1">Built by Mohd Kaif Ansari</a>
+        <span>KCC Institute of Technology and Management, Greater Noida</span>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // 2. Typewriter Effect
+        const texts = ["CS Student.", "Problem Solver.", "Developer."];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+
+            document.getElementById("typewriter").textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Wait 2s before next word
+            } else {
+                setTimeout(type, 100); // Typing speed
+            }
+        })();
+
+        // 3. Form Validation & Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const phoneInput = document.getElementById('phoneNumber');
+            const phoneError = document.getElementById('phoneError');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            // Regex for exactly 10 digits
+            const phoneRegex = /^\d{10}$/;
+
+            if (!phoneRegex.test(phoneInput.value)) {
+                phoneError.classList.remove('hidden');
+                phoneInput.classList.add('border-red-500');
+                phoneInput.classList.remove('focus:border-neon-cyan');
+                return;
+            } else {
+                phoneError.classList.add('hidden');
+                phoneInput.classList.remove('border-red-500');
+                phoneInput.classList.add('focus:border-neon-cyan');
+            }
+
+            // UI Loading State
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            // AJAX Request to FormSubmit
+            fetch("https://formsubmit.co/ajax/kaifansari.in@gmail.com", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Message received! I will get back to you soon.");
+                form.reset();
+            })
+            .catch(error => {
+                alert("Something went wrong. Please try again later.");
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
